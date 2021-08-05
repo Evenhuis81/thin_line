@@ -5,12 +5,22 @@ class Editor {
     Editor() {on();}
     void on() {active=true;}
     void off() {active=false;}
-    void show() {
+    void update() {
         xLive = grid.mousePointerX();
         yLive = grid.mousePointerY();
+    }
+    void show() {
         if (drawing) showLine();
         color c = drawing ? color(255,0,0) : color(255);
         drawPointer(xLive, yLive, c, 6);
+        // if (editor.active) {
+        //     c = (i == 0) ? color(0,0,255) : c;
+        //     editor.drawPointer(temp[0], temp[1], c, 6);
+        //     if (!editor.drawing) {
+        //         c = (i == map.size()-1 && editor.active) ? color(0,255,255) : color(0,255,0);
+        //         editor.drawPointer(temp[2], temp[3], c, 6);
+        //     }
+        // }
     }
     void roadStart() {
         drawing = true;
@@ -19,7 +29,16 @@ class Editor {
     }
     void roadStop() {
         drawing = false;
-        if (xStart == xLive && yStart == yLive) return;
+        if (xStart == xLive && yStart == yLive) {
+            // showWarningText("Nothing added", 2); // msg, duration
+            println("nothing added");
+            return;
+        }
+        if (!road.connected(xStart, yStart)) {
+            // showWarningText("Connect from the light blue dot please...", 3); // msg, duration
+            println("NOT CONNECTED");
+            return;
+        }
         int[] line = { xStart, yStart, xLive, yLive };
         road.add(line);
         if (road.startIsEnd(xLive, yLive)) {
