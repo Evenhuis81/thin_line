@@ -1,8 +1,14 @@
 class Editor {
+    Grid grid;
+    Road road;
     boolean active;
     int xLive, yLive, xStart, yStart;
     boolean drawing;
-    Editor() {on();}
+    Editor(Grid grid_, Road road_) {
+        road = road_;
+        grid = grid_;
+        on();
+    }
     void on() {active=true;}
     void off() {active=false;}
     void update() {
@@ -48,7 +54,7 @@ class Editor {
         road.add(line);
         if (road.startIsEnd(xLive, yLive)) {
             grid.off();
-            editor.off();
+            off();
             return;
         }
     }

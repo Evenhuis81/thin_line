@@ -1,17 +1,17 @@
 void mousePressed() {
-    if (editor.active) {
-        editor.roadStart();
+    if (program.editor.active) {
+        program.editor.roadStart();
     }
 }
 
 void mouseReleased() {
-    if (editor.active) {
-        editor.roadStop();
+    if (program.editor.active) {
+        program.editor.roadStop();
     }
 }
 
 void keyPressed() {
     if (key == 'c') {
-        road.map.clear();
+        program.road.map.clear();
     }
 }
