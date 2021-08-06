@@ -15,5 +15,6 @@ class Program {
         if (editor.active) editor.update();
         road.show();
         if (editor.active) editor.show();
+        vehicle.show();
     }
 }
