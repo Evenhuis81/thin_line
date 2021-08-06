@@ -5,7 +5,7 @@ class Road {
             color c = color(0,255,0);
             stroke(c);
             strokeWeight(2);
-            int[] temp = map.get(i);                
+            int[] temp = map.get(i);
             line(temp[0], temp[1], temp[2], temp[3]);
         }
     }
@@ -16,11 +16,11 @@ class Road {
         return x_ == beginX() && y_ == beginY();
     }
     int beginX() {
-        if (map.size() == 0) return -11111;
+        if (map.size() == 0) return -1;
         return map.get(0)[0];
     }
     int beginY() {
-        if (map.size() == 0) return -11111;
+        if (map.size() == 0) return -1;
         return map.get(0)[1];
     }
     boolean connected(int x_, int y_) {
